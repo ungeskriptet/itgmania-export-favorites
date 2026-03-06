@@ -45,7 +45,7 @@ for i in "$favorites" "$songs"; do
 	fi
 done
 
-if [ -e "$out" ] && ! is_empty "$out"; then
+if [ -d "$out" ] && ! is_empty "$out"; then
 	echo "$out already exists and is not empty" 1>&2
 	exit 1
 fi
@@ -57,7 +57,7 @@ while IFS="" read line; do
 	if [ "$(dirname -- "$line")" = "." ]; then
 		continue
 	fi
-	songpack="$(dirname "$line")"
+	songpack="$(dirname -- "$line")"
 	if [ -d "$songs/$line" ] && is_empty "$out/$line"; then
 		[ $verbose -eq 1 ] && echo "Copying $line"
 		mkdir -p "$out/$songpack"

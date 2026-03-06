@@ -16,8 +16,8 @@
         itgmania-export-favorites = nixpkgs.legacyPackages.${system}.callPackage (
           { runCommand }:
           runCommand "itgmania-export-favorites" { } ''
-                      install -Dm755 ${./itgmania-export-favorites.sh} $out/bin/itgmania-export-favorites
-            	''
+            install -Dm755 ${./itgmania-export-favorites.sh} $out/bin/itgmania-export-favorites
+          ''
         ) { };
       });
       formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-tree);
